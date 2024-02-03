@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import CartContext from "../store/cart-context";
 
 const Product = ({ products }) => {
+  const cartContext = useContext(CartContext);
+
+  const addToCartHandler = (newItem) => {
+    // console.log(newItem);
+    cartContext.addItem(newItem, 1);
+  };
+
   return (
     <Container className="mt-4 text-center">
       <Row className="justify-content-center">
@@ -14,7 +22,12 @@ const Product = ({ products }) => {
                 <Card.Title>{`${album.title}`}</Card.Title>
                 <div className="d-flex justify-content-between w-100">
                   <Card.Text>$: {album.price}</Card.Text>
-                  <Button variant="info">ADD TO CART</Button>
+                  <Button
+                    variant="info"
+                    onClick={() => addToCartHandler(album)}
+                  >
+                    ADD TO CART
+                  </Button>
                 </div>
               </Card.Body>
             </Card>
