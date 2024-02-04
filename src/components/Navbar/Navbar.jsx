@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import CartContext from "../store/cart-context";
+import { NavLink } from "react-router-dom";
 
 const MyNavbar = ({ handleShow }) => {
   const cartContext = useContext(CartContext);
@@ -13,13 +14,35 @@ const MyNavbar = ({ handleShow }) => {
     <Navbar bg="dark" variant="dark">
       <Container>
         <Nav className="me-auto mx-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Store</Nav.Link>
-          <Nav.Link href="#pricing">About</Nav.Link>
+          <NavLink
+            to="/"
+            style={({ isActive }) => {
+              return isActive ? { color: "plum" } : {};
+            }}
+            exact
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/store"
+            style={({ isActive }) => {
+              return isActive ? { color: "plum" } : {};
+            }}
+          >
+            Store
+          </NavLink>
+          <NavLink
+            to="/about"
+            style={({ isActive }) => {
+              return isActive ? { color: "plum" } : {};
+            }}
+          >
+            About
+          </NavLink>
         </Nav>
       </Container>
-      <Button variant="primary" onClick={handleShow && handleShow}>
-        Cart:{totalQuantity}
+      <Button variant="outline-light" onClick={handleShow && handleShow}>
+        Cart: {totalQuantity}
       </Button>
     </Navbar>
   );
