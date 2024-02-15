@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { Button, Card, ListGroup } from "react-bootstrap";
 import classes from "./Home.module.css";

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import CartContext from "../store/cart-context";
 import { NavLink } from "react-router-dom";
+import CartContext from "../store/cart-context";
 
 const MyNavbar = ({ handleShow }) => {
   const cartContext = useContext(CartContext);
@@ -10,38 +10,31 @@ const MyNavbar = ({ handleShow }) => {
     return curQuantity + Number(item.quantity);
   }, 0);
 
+  const navLinkStyle = {
+    color: "plum",
+    textDecoration: "none",
+    padding: "0.5rem 1rem",
+  };
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Nav className="me-auto mx-auto">
-          <NavLink
-            to="/"
-            style={({ isActive }) => {
-              return isActive ? { color: "plum" } : {};
-            }}
-            exact
-          >
+        <Nav className="me-auto">
+          <NavLink to="/" exact style={navLinkStyle}>
             Home
           </NavLink>
-          <NavLink
-            to="/store"
-            style={({ isActive }) => {
-              return isActive ? { color: "plum" } : {};
-            }}
-          >
+          <NavLink to="/store" style={navLinkStyle}>
             Store
           </NavLink>
-          <NavLink
-            to="/about"
-            style={({ isActive }) => {
-              return isActive ? { color: "plum" } : {};
-            }}
-          >
+          <NavLink to="/about" style={navLinkStyle}>
             About
+          </NavLink>
+          <NavLink to="/contact_us" style={navLinkStyle}>
+            Contact Us
           </NavLink>
         </Nav>
       </Container>
-      <Button variant="outline-light" onClick={handleShow && handleShow}>
+      <Button variant="outline-light" onClick={handleShow}>
         Cart: {totalQuantity}
       </Button>
     </Navbar>
