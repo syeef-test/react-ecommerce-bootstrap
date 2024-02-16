@@ -1,9 +1,9 @@
-import MainNavigation from "../MainNavigation";
+import MyNavbar from "../Navbar/Navbar";
 
 function ErrorPage() {
   return (
     <>
-      <MainNavigation />
+      <MyNavbar />
       <main>
         <h1>An error occured!</h1>
         <p>Coud Not Find This Page</p>

@@ -32,6 +32,9 @@ const MyNavbar = ({ handleShow }) => {
           <NavLink to="/contact_us" style={navLinkStyle}>
             Contact Us
           </NavLink>
+          <NavLink to="/products" style={navLinkStyle}>
+            Products
+          </NavLink>
         </Nav>
       </Container>
       <Button variant="outline-light" onClick={handleShow}>
