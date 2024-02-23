@@ -15,6 +15,7 @@ import Contact_us from "./components/pages/Contact_us";
 import ErrorPage from "./components/pages/Error";
 import Product from "./components/pages/Product";
 import ProductDetail from "./components/pages/ProductDetail";
+import Signin from "./components/pages/Signin";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -35,7 +36,7 @@ function App() {
             <Route path="/contact_us" component={Contact_us} />
             <Route exact path="/products" component={Product} />
             <Route path="/products/:productId" component={ProductDetail} />
-
+            <Route path="" component={Signin} />
             <Route component={ErrorPage} />
           </Switch>
         </CartProvider>
