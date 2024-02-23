@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import CartModal from "./components/Cart/CartModal";
@@ -16,12 +16,15 @@ import ErrorPage from "./components/pages/Error";
 import Product from "./components/pages/Product";
 import ProductDetail from "./components/pages/ProductDetail";
 import Signin from "./components/pages/Signin";
-
+import AuthContext from "../src/components/store/auth-context";
 function App() {
   const [showModal, setShowModal] = useState(false);
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
 
   return (
     <>
@@ -34,8 +37,13 @@ function App() {
             <Route path="/about" component={About} />
             <Route path="/store" component={Store} />
             <Route path="/contact_us" component={Contact_us} />
-            <Route exact path="/products" component={Product} />
-            <Route path="/products/:productId" component={ProductDetail} />
+            {isLoggedIn && (
+              <>
+                <Route exact path="/products" component={Product} />
+                <Route path="/products/:productId" component={ProductDetail} />
+              </>
+            )}
+
             <Route path="" component={Signin} />
             <Route component={ErrorPage} />
           </Switch>
