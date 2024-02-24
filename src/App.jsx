@@ -29,14 +29,16 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <MyNavbar />
-        <Header />
         <CartProvider>
+          <MyNavbar handleShow={handleShow} />
+          <Header />
+          <CartModal showModal={showModal} handleClose={handleClose} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/store" component={Store} />
             <Route path="/contact_us" component={Contact_us} />
+
             {isLoggedIn && (
               <>
                 <Route exact path="/products" component={Product} />

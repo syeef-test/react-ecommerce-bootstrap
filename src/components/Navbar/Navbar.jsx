@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import CartContext from "../store/cart-context";
 import AuthContext from "../store/auth-context";
 
-const MyNavbar = ({ handleShow }) => {
+const MyNavbar = ({ showModal, handleShow, handleClose }) => {
   const cartContext = useContext(CartContext);
 
   const authCtx = useContext(AuthContext);
@@ -65,9 +65,13 @@ const MyNavbar = ({ handleShow }) => {
           )}
         </Nav>
       </Container>
-      <Button variant="outline-light" onClick={handleShow}>
-        Cart: {totalQuantity}
-      </Button>
+      {isLoggedIn && (
+        <>
+          <Button variant="outline-light" onClick={handleShow}>
+            Cart:{totalQuantity}
+          </Button>
+        </>
+      )}
     </Navbar>
   );
 };

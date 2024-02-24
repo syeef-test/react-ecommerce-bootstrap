@@ -36,6 +36,7 @@ function Signin() {
       if (response.status === 200) {
         authCtx.login(response.data.idToken);
         alert("Sign In Succesful");
+        localStorage.setItem("email", email);
         history.replace("/products");
       }
 

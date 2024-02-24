@@ -37,9 +37,13 @@ const productsArr = [
 const Product = () => {
   const cartContext = useContext(CartContext);
 
-  const addToCartHandler = (newItem) => {
-    // console.log(newItem);
-    cartContext.addItem(newItem, 1);
+  const addToCartHandler = async (newItem) => {
+    try {
+      cartContext.addItem(newItem, 1);
+      //cartContext.getCartItem();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
