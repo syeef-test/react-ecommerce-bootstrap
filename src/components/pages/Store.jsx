@@ -1,5 +1,15 @@
 import React from "react";
 
 export default function Store() {
-  return <div>Store</div>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      Store
+    </div>
+  );
 }

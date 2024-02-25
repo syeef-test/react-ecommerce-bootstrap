@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 function ContactUs() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const phoneRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      phone: phoneRef.current.value,
+    };
+
     try {
       const data = await axios.post(
-        "https://react-contact-us-fa419-default-rtdb.firebaseio.com/contact-us.json",
+        "https://react-http-83be3-default-rtdb.firebaseio.com/contact-us.json",
         formData
       );
       if (data) {
@@ -29,11 +25,9 @@ function ContactUs() {
         console.log("Data stored successfully!");
       }
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-      });
+      nameRef.current.value = "";
+      emailRef.current.value = "";
+      phoneRef.current.value = "";
     } catch (error) {
       console.error("Error storing data:", error);
     }
@@ -46,21 +40,13 @@ function ContactUs() {
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter name"
-            />
+            <Form.Control type="text" ref={nameRef} placeholder="Enter name" />
           </Form.Group>
           <Form.Group controlId="email">
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
+              ref={emailRef}
               placeholder="Enter email"
             />
           </Form.Group>
@@ -68,9 +54,7 @@ function ContactUs() {
             <Form.Label>Enter phone number</Form.Label>
             <Form.Control
               type="number"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
+              ref={phoneRef}
               placeholder="Enter phone number"
             />
           </Form.Group>

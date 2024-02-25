@@ -40,17 +40,31 @@ const ProductDetail = () => {
 
   return (
     <section>
-      <h1>Product Detail</h1>
-      {product ? (
-        <div>
-          <h2>{product.title}</h2>
-          <img src={product.imageUrl} alt={product.title} />
-          <p>Price: ${product.price}</p>
-          <p>Review: {product.review}</p>
-        </div>
-      ) : (
-        <p>Product not found</p>
-      )}
+      <h1
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        Product Detail
+      </h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {product ? (
+          <div>
+            <h2>{product.title}</h2>
+            <img src={product.imageUrl} alt={product.title} />
+            <p>Price: ${product.price}</p>
+            <p>Review: {product.review}</p>
+          </div>
+        ) : (
+          <p>Product not found</p>
+        )}
+      </div>
     </section>
   );
 };

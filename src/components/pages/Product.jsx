@@ -48,13 +48,24 @@ const Product = () => {
 
   return (
     <section>
-      <h1>The Products Page</h1>
+      <h1
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        The Products Page
+      </h1>
       <Container>
         <Row>
           {productsArr.map((product, index) => (
             <Col key={index} xs={12} sm={6} md={4} lg={3}>
-              <Card style={{ margin: "10px 0" }}>
-                <Card.Img variant="top" src={product.imageUrl} />
+              <Card style={{ margin: "5px 0" }}>
+                <Card.Img
+                  variant="top"
+                  style={{ width: "100%", height: "200px" }}
+                  src={product.imageUrl}
+                />
                 <Card.Body>
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Text>Price: ${product.price}</Card.Text>
