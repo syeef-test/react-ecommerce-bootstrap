@@ -34,7 +34,7 @@ function ContactUs() {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container className="d-flex justify-content-center align-items-center">
       <div>
         <h3>Contact Us</h3>
         <Form onSubmit={handleSubmit}>

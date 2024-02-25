@@ -74,7 +74,9 @@ const Product = () => {
                     Add to Cart
                   </Button>
                   {/* Link to each product */}
-                  <Link to={`/products/${product.title}`}>View Details</Link>
+                  <Link to={`/products/${product.title}`} class="btn btn-info">
+                    View Details
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>

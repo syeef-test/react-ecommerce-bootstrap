@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import CartModal from "./components/Cart/CartModal";
@@ -17,6 +17,7 @@ import Product from "./components/pages/Product";
 import ProductDetail from "./components/pages/ProductDetail";
 import Signin from "./components/pages/Signin";
 import AuthContext from "../src/components/store/auth-context";
+
 function App() {
   const [showModal, setShowModal] = useState(false);
 
